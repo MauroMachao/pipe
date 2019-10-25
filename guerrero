@@ -1,0 +1,46 @@
+package ar.edu.uno.mb;
+
+public class Soldado extends Guerrero implements Posiones{
+	///////////////////////////////////////////
+	//ATRIBUTOS:
+	private static int energia=100;
+	static int saludS=200;
+	///////////////////////////////////////////////
+	//CONSTRUCTORES:
+	public Soldado(int s, Punto coor, int e,int ss) {
+		super(s, coor);
+		this.setSalud(ss);
+		this.setCoordenadas(getCoordenadas());
+	}
+	//////////////////////////////
+	//METODOS:
+	@Override
+	protected void mover(String cad) {
+		this.setCoordenadas(Compilador.compilar(cad).ejecutar());
+		/*permite mover al soldado a travez del campo de batalla,
+		 *  modificando los valores de sus coordenadas*/
+	}
+	@Override
+	protected void atacar(Guerrero enemigo) {
+		if(this.getSalud()>0 && enemigo.getSalud() >0);
+		if(this.getCoordenadas().distanciaEP(enemigo.getCoordenadas())<2) {
+			enemigo.setSalud(getSalud() - 10);
+			this.setEnergia(getEnergia() - 10);
+   /*Si ambos objetos estan vivos(salud >0), y el enemigo se encuentra dentro
+     del radio de atraque del soldado: 
+                                       soldado resta 10 puntos de energia.
+                                       enemigo resta 10 puntos de vida. */
+		}
+	}
+	public void posionDeAgua() {
+		this.setSalud(saludS);
+	}
+	////////////////////////////////////////////
+	//SETTERS & GETTERS:
+	public int getEnergia() {
+		return energia;
+	}
+	public void setEnergia(int energia) {
+		this.energia = energia;
+	}
+}
