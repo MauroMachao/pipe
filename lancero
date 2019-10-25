@@ -1,0 +1,29 @@
+package ar.edu.uno.mb;
+
+public class Lancero extends Guerrero{
+	//ATRIBUTOS:
+	static int saludL=150;
+
+	//CONSTRUCTORES:
+	public Lancero(int s, Punto coor, int sl) {
+		super(s,coor);
+		this.setSalud(sl);
+		this.setCoordenadas(getCoordenadas());
+	}
+	//METODOS:
+	public void  mover(String cad) {
+		this.setCoordenadas(Compilador.compilar(cad).ejecutar());
+		/*permite mover al lacero a travez del campo de batalla,
+		 *  modificando los valores de sus coordenadas*/
+	}
+	public void atacar(Guerrero enemigo) {
+		if(this.getSalud()>0 && enemigo.getSalud() >0);
+		if(this.getCoordenadas().distanciaEP(enemigo.getCoordenadas())>0 &&
+				this.getCoordenadas().distanciaEP(enemigo.getCoordenadas())<=3) {
+			enemigo.setSalud(getSalud() - 25);
+
+		}
+
+	}
+
+}
