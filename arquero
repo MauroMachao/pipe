@@ -1,0 +1,44 @@
+package ar.edu.uno.mb;
+
+public class Arquero extends Guerrero {
+	//ATRIBUTOS:
+	private static int flechas=20;
+	static int saludA=50;
+
+	public Arquero(int s, Punto coor,int f, int sa) {
+		super(s, coor);
+		this.setSalud(saludA);
+		this.setCoordenadas(getCoordenadas());
+      }
+	//////////////////////////////////////////
+	//METODOS:
+	protected void mover(String cad) {
+			this.setCoordenadas(Compilador.compilar(cad).ejecutar());
+			/*permite mover al arquero a travez del campo de batalla,
+			 *  modificando los valores de sus coordenadas*/
+				}
+	protected void atacar(Guerrero enemigo) {
+         if(this.getSalud()>0 && enemigo.getSalud() >0);
+         if(this.getFlechas()>0);
+		if(this.getCoordenadas().distanciaEP(enemigo.getCoordenadas())<=5 &&
+		   this.getCoordenadas().distanciaEP(enemigo.getCoordenadas())	>=2) {
+			enemigo.setSalud(getSalud() - 5);
+			this.setFlechas(getFlechas() - 1);
+		}
+	}
+	public  void recargaF() {
+		this.setFlechas(getFlechas() + 6);
+		/*Recarga seis flechas al carcaj del arquero*/
+	}
+	///////////////////////////
+// SETTERS & GETTERS:
+	public  static int getFlechas() {
+		return flechas;
+	}
+
+	public static  void setFlechas(int flechas) {
+		Arquero.flechas = flechas;
+	}
+}
+
+
