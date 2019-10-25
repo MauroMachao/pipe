@@ -1,0 +1,60 @@
+package ar.edu.uno.mb;
+
+public class Movimiento {
+	//ATRIBUTO:
+	private String cad;
+	///////////////////
+
+	//CONSTRUCTORES:
+	public Movimiento(String cad) {
+		this.setCad(getCad());
+	}
+	
+	public Movimiento() {
+		this(null);
+	}
+	////////////////////////////////////
+	//METODO:
+	public Punto ejecutar() {
+
+		Punto po = new Punto();
+		if(this.getCad()!=null) {
+		
+		for(int i=0; i<this.getCad().length()-1; i++){
+
+			
+			switch(this.getCad().charAt(i)) {
+
+			case 'N':{po.setY(po.getY() +1);}
+			break;
+
+			case 'S':{po.setY(po.getY() -1);}
+			break;
+
+			case 'E':{po.setX(po.getX() +1);}
+			break;
+
+			case 'O':{po.setX(po.getX() -1);}
+			break;
+
+			}
+			
+		}
+		}
+		return po;
+	}
+		
+	
+	
+	///////////////////////////////////
+	//SETTERS & GETTERS:
+	public String getCad() {
+		return cad;
+	}
+
+	public void setCad(String cad) {
+		this.cad = cad;
+	}
+
+	
+}
