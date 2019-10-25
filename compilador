@@ -1,0 +1,32 @@
+package ar.edu.uno.mb;
+import java.util.regex.*;
+public class Compilador {
+	//ATRIBUTOS:
+	private String cadena;
+	/////////////////////////////
+	//CONSTRUCTOR:
+	public Compilador(String c) {
+		this.setCadena(c);
+	}
+	public Compilador() {
+		this(null);
+	}
+////////////////////////////////////////
+	//METODOS:
+	public static Movimiento compilar(String cad) {
+		if(cad==null) return null;
+		return(cad.matches("([N|S|E|O)])*")) ? new Movimiento() : null;
+	
+		}
+	
+	
+	//SETTERS & GETTERS:
+	public String getCadena() {
+		return cadena;
+	}
+
+	public void setCadena(String cadena) {
+		this.cadena = cadena;
+	}
+
+}
