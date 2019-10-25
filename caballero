@@ -1,0 +1,59 @@
+package ar.edu.uno.mb;
+
+public class Caballero extends Guerrero implements Posiones{
+
+	//ATRIBUTOS:
+	static int saludC=200;
+	private boolean caballo;
+	private static int cont =0;
+	////////////////////////
+
+	//CONTRUCTOR:
+	public Caballero(int s, Punto coor, int c, int sc) {
+		super(s,coor);
+		this.setSalud(sc);
+		this.setCaballo(false);
+	}
+	///////////////////////////////////////////
+	//METODOS:
+	protected void mover(String cad) {
+		this.setCoordenadas(Compilador.compilar(cad).ejecutar());
+		/*permite mover al caballero a travez del campo de batalla,
+		 *  modificando los valores de sus coordenadas*/
+	}
+	protected void atacar(Guerrero enemigo) {
+		if(this.getSalud()>0 && enemigo.getSalud() >0);
+		if(! this.isCaballo());
+		if(this.getCoordenadas().distanciaEP(enemigo.getCoordenadas())<2) {
+			enemigo.setSalud(getSalud() - 30);
+			cont ++;
+			if(cont==3) {
+				this.setCaballo(true);
+			}
+		}
+	}
+	public  void posionDeAgua() {
+		this.setCaballo(false);
+		cont =0;
+		/*la posion de agua cambia el estado de reveldia del caballo;
+	de verdadero a falso. En caso de que el caballo no este revelde,
+    mantiene su estado, pero el contador de ataques se reinicia en 0*/
+	}
+
+
+	/////////////////////
+	//SETTERS & GETTERS:
+	public static int getCont() {
+		return cont;
+	}
+	public static void setCont(int cont) {
+		Caballero.cont = cont;
+	}
+    public boolean isCaballo() {
+		return caballo;
+	}
+    public void setCaballo(boolean caballo) {
+		this.caballo = caballo;
+	}
+
+}
